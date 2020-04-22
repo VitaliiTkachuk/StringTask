@@ -44,7 +44,7 @@ public class ST {
                 "of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts" +
                 " it is an almost unorthographic life One day however a small line of blind text by the name of " +
                 "Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, " +
-                "because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the " +
+                "because there were thousands of bad 2020, wild Question Marks and devious Semikoli, but the " +
                 "Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt " +
                 "and made herself on the way. When she reached the first hills of the Italic Mountains, " +
                 "she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village " +
@@ -131,8 +131,8 @@ public class ST {
             System.out.println("Input number of string for next reverse: (default: 7)");
             Scanner inputNumber = new Scanner(System.in);
             int numberStrForRev = inputNumber.nextInt();
-            System.out.println("Your \"normal\" string " + forRevers(numberStrForRev,myString1));
-            System.out.println("Your \"reverse\" string " + revers(forRevers(numberStrForRev,myString1)));
+            System.out.println("Your \"normal\" string: " + forRevers(numberStrForRev,myString1));
+            System.out.println("Your \"reverse\" string: " + revers(forRevers(numberStrForRev,myString1)));
 
             //Вивід кількості речень
             System.out.println("***");
