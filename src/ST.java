@@ -149,7 +149,7 @@ public class ST {
 
     /* Метод реверсу знайденого рядка */
     static String revers(String StringForReverse){
-        String revString; // обернутий рядок, який видає метод*/
+        String revString = new String();; // обернутий рядок, який видає метод*/
         /*формуємо новий масив зі слів рядка, призначеного для обертання по символу пробілу (по словах)*/
         String[] revArrOfString1 = StringForReverse.split("\\s");
         String[] revArrOfString2 = new String[revArrOfString1.length]; //Масив для зберігання "перевернутого" рядка
