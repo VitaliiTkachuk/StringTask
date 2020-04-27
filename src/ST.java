@@ -1,7 +1,10 @@
 import org.w3c.dom.css.CSSUnknownRule;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 /**
  * Згенерувати текст який містить більше 10_000 символів (generator) - +
@@ -18,6 +21,7 @@ public class ST {
 
     static final String myString1 = new String("Far far away, behind the word mountains, " +
                 "far from the countries Vokalia and 10 10 1001 , there live the blind texts. " +
+                "Кіт ловив, що, мишу." +
                 "The Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. " +
                 "Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. " +
                 "A small river named Duden flows by their place and supplies it with the necessary regelialia. " +
@@ -171,11 +175,36 @@ public class ST {
             System.out.println("***");
             System.out.println("Count how many words 3, 5, 7 characters are in the text");
             System.out.println(sumWords(myString1));
+
+//-------------------------------------------------------------------------------------------------------------------------
+            /*ти рахуєш загальну кількість, порахуй окремо скільки слів кожної довжини*/
+            //для спрошення використав 3 аргументи
+            System.out.println("***");
+            System.out.println("----------------------------------------------------------");
+            int arrArg[] = new int[3];
+
+            System.out.println("Input 1 argument (size) to count words");
+            int a = inputNumber.nextInt();
+            arrArg[0] = a;
+            System.out.println("Input 2 argument (size) to count words");
+            int b = inputNumber.nextInt();
+            arrArg[1] = b;
+            System.out.println("Input 3 argument (size) to count words");
+            int c = inputNumber.nextInt();
+            arrArg[2] = c;
+
+            System.out.println("");
+            System.out.println("Your text has the following numbers of words " );
+            int[] s =  sumWordsSingly(myString1,a,b,c);
+
+            for (int i = 0; i < s.length; i++) {
+                System.out.println("size " + arrArg[i] + " words " + s[i]);
+            }
         }
 
 
      //----------------------------------------------------------------------------------------------------------------
-    // В 17ому реченні всі слова вивести в зворотному порядку
+    // В 7ому реченні всі слова вивести в зворотному порядку
 
     /* Метод знаходження рядка для реверса */
     static String forRevers(int numberStr, String myString){
@@ -185,6 +214,7 @@ public class ST {
         String [] arrOfStrings = myString.split("\\.");
         /*Присвоюємо змінній forRevString рядок з масиву рядків відповідно до аргументу методу*/
         forRevString = arrOfStrings[numberStr];
+        forRevString = forRevString + "."; // додав пропущену крапку.
         return forRevString;
     }
 
@@ -194,12 +224,14 @@ public class ST {
         /*формуємо новий масив зі слів рядка, призначеного для обертання по символу пробілу (по словах)*/
         String[] revArrOfString1 = StringForReverse.split("\\s");
         String[] revArrOfString2 = new String[revArrOfString1.length]; //Масив для зберігання "перевернутого" рядка
+
         for (int i = 0; i < revArrOfString1.length; i++) {
             //1 елементу "перевернутого" масиву присвоюємо останній елемент "нормального"
             revArrOfString2[i] = revArrOfString1[revArrOfString1.length - 1 - i];
         }
         // Формуємо рядок з "перевернутого" масиву методом join з java.util.Arrays з розділювачем слів пробілом
         revString = String.join(" ",revArrOfString2);
+
         return revString;
     }
     //-------------------------------------------------------------------------------------------------------------------
@@ -355,5 +387,25 @@ public class ST {
         return sumW;
     }
 
+    //порахуй окремо скільки слів кожної довжини є в тексті
+    static int[] sumWordsSingly(String myString, int ...sizes) {
+        //int sumW = 0; //лічильник кількості слів
+        //int s;
+        int sumW[] = new int[3];
+        sumW[0] = 0;
+
+        /*формуємо новий масив зі слів рядка по символу пробілу (по словах)*/
+        String[] arrStr = myString.split("\\s");
+
+        for (int j = 0; j < sizes.length; j++) {
+
+            for (int i = 0; i < arrStr.length; i++) {
+                if (arrStr[i].length() == sizes[j])
+                    sumW[j] = sumW[j] + 1;
+            }
+        }
+
+        return sumW;
+    }
 
 }
